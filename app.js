@@ -4,7 +4,7 @@ const express = require("express"),
     http = require("http"),
     server = http.createServer(app),
     mongoose = require("mongoose");
-    cookieParser = require('cookie-parser')
+cookieParser = require('cookie-parser')
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(logger('dev'));
@@ -12,11 +12,12 @@ app.use(cookieParser());
 app.set('view engine', 'pug');
 
 require('dotenv').config({
-    path:   `./environments/${process.env.SCOPE === 'development' ? process.env.SCOPE : 'production'}.env`
+    path: `./environments/${process.env.SCOPE === 'development' ? process.env.SCOPE : 'production'}.env`
 });
 
-mongoose.connect(process.env.MONGODB_URI).then(() =>{
+mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log('Connected to MongoDB');
+    console.log('running on localhost:8080');
 }).catch(err => {
     console.log(err);
 });

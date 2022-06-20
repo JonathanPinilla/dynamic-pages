@@ -3,6 +3,8 @@ const router = express.Router();
 var mongoose = require("mongoose");
 Schema = mongoose.Schema;
 
+const app = require("../app");
+
 const gameModel = require("../models/gameModel");
 const playerModel = require("../models/playersModel");
 
@@ -13,6 +15,8 @@ router.post('/createGame', async (request, response, next) => {
     try {
         await playerModel.deleteMany();
         const { _id, gamers } = request.body;
+        console.log(_id);
+        console.log(gamers);
         const data = new gameModel({
             _id,
             gamers,
@@ -24,11 +28,9 @@ router.post('/createGame', async (request, response, next) => {
             });
             theGamers.save();
         });
-        
+
         await data.save();
-        response.json({
-            message: 'Game created successfully',
-        });
+        response.redirect(`/getGame/${data._id}`);
     } catch (error) {
         response.status(500).json({
             message: error.message,

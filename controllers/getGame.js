@@ -14,6 +14,7 @@ router.get('/game/:_id', async (request, response, next) => {
 
         const _id = data._id;
         const inProgress = data.inProgress;
+        const gamers = await playerModel.find();
         
         const winner = await playerModel.findOne({'name': data.winner});
 

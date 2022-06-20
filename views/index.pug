@@ -2,6 +2,14 @@ html
 
     head 
         title= pageName
+        style
+            include ../css/style.css
 
     body 
-        h3 Hello this is the main page of the dice game!!
+        h3 This is the game main page, you must include 3 gamers in order to create a game
+        form(action="/createGame", method="post") 
+            input(type="text", name="_id", placeholder="_id")
+            input(type="text", name="gamers", value="", placeholder="first gamer")
+            input(type="text", name="gamers", value="", placeholder="second gamer")
+            input(type="text", name="gamers", value="", placeholder="third gamer")
+            button(type="submit") submit
