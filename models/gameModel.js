@@ -2,11 +2,26 @@ var mongoose = require("mongoose");
 Schema = mongoose.Schema;
 
 var gameSchema = new Schema({
-    id: { type: String },
-    players: [{
-        name: { type: String },
-        playerBet: { type: Number },
+    _id: {
+        type: String,
+        required: true,
+        trim: true
+    },
+    type: {
+        type: String,
+        trim: true
+    },
+    gamers: [{
+        type: String
     }],
-});
+    inProgress: {
+        type: Boolean,
+        trim: true
+    },
+    winner: {
+        type: String,
+        trim: true
+    }
+}, { versionKey: false });
 
 module.exports = mongoose.model("gameModel", gameSchema);
