@@ -10,32 +10,41 @@ const game = require("./game");//imports the class that runs the game and determ
 
 router.post('/startGame', async (request, response, next) => {
     try {
-        const { _id, gamerBet } = request.body;
+        const { _id, gamerBets } = request.body;
         game(_id);
         const gamers = await playerModel.find();
 
-        let values = Object.values(gamerBet);
         var totalBets = 0;
-        
-        await gamerBet.forEach((element, index) => {
+
+        await gamerBets.forEach((element, index) => {
             gamers[index].gamerBet = parseInt(element);
             totalBets = totalBets + parseInt(element);
             console.log(totalBets);
-            console.log("_id: " + gamers[index]._id + "gamerBet: " + parseInt(element));
+            console.log("_id: " + gamers[index]._id + " gamerBet: " + parseInt(element));
         });
 
         const data = await gameModel.findByIdAndUpdate(_id, {
             inProgress: false,
         });
         data.save();
+
         console.log(data.inProgress);
 
-        const resolveBets = await playerModel.findOneAndUpdate(data.winner, {
+        const data2 = await gameModel.findById(_id);
+
+        const winner = data2.winnerId;
+
+        console.log("Data: " + data2);
+        console.log("winner " + winner);
+
+        const resolveBets = await playerModel.findOneAndUpdate(winner, {
             gamerBet: totalBets,
         });
+        console.log(resolveBets);
+        resolveBets.save();
 
-        const winner = data.winner;
-        
+
+
         response.redirect(`/game/${_id}/winner`);
         /* response.json({
             message: 'Game started!!',

@@ -23,6 +23,10 @@ var gameSchema = new Schema({
     winner: {
         type: String,
         trim: true
+    },
+    winnerId:{
+        type: String,
+        trim: true
     }
 }, { versionKey: false });
 

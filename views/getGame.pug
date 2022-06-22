@@ -38,16 +38,22 @@ html
             
             tr 
                 td Winner 
-                td= winner
+                td  _id: #{winner._id}
+                    br
+                    | Name: #{winner.name}
+                    br
+                    | Money: #{winner.gamerBet}
         if(winner == "No winner yet!")
-            h3 To start a new game fill the bet fields and then press start
+            h3 To start a new game fill the bet fields and then press start, this will roll a dice for every player and choose as a winner the player who get the highest number
             form(action="/startGame", method="post") 
                 label(for='_id', class="gameLabel") Game _id
                 input(type="text", name="_id", required)
-                label(for='gamerBet', class="gameLabel") First Gamer: #{gamers[0].name} bet
-                input(type="number" min="1", name="gamerBet", required)
-                label(for='gamerBet', class="gameLabel") Second Gamer: #{gamers[1].name} bet
-                input(type="number" min="1", name="gamerBet", required)
-                label(for='gamerBet', class="gameLabel") Third Gamer: #{gamers[2].name} bet
-                input(type="number" min="1", name="gamerBet", required)
+                label(for='gamerBets', class="gameLabel") First Gamer: #{gamers[0].name} bet
+                input(type="number" min="1", name="gamerBets", required)
+                label(for='gamerBets', class="gameLabel") Second Gamer: #{gamers[1].name} bet
+                input(type="number" min="1", name="gamerBets", required)
+                label(for='gamerBets', class="gameLabel") Third Gamer: #{gamers[2].name} bet
+                input(type="number" min="1", name="gamerBets", required)
                 button(type="submit", class="button2")= startGame
+        else   
+            a(href="http://localhost:8080") New Game

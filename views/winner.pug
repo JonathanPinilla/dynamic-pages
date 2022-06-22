@@ -7,7 +7,9 @@ html
     
     body(style="display: flex; flex-direction: column; justify-content: center;")
         div
-            h2 The winner is: #{name} and win a total of #{totalBets}
+            h2 The winner is: #{name} and win a total of #{gamerBet}
             h2 if you want to create a new game you press the button "New Game"
+            h2 Or press view game to see all the game data
             a(type="button" href="http://localhost:8080") New Game
+            a(type="button" href=`http://localhost:8080/game/${gameId}`) View Game
         

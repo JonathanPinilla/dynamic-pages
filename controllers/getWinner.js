@@ -9,21 +9,21 @@ const playerModel = require("../models/playersModel");
 router.get('/game/:_id/winner', async(request, response, next) => {
     try {
         const data = await gameModel.findById(request.params._id);
+        const gameId = request.params._id;
         const winner = await playerModel.findOne({'name': data.winner});
         if(data.inProgress == true){
             console.log('The game is not started')
         }else{
             const _id = winner._id;
             const name = winner.name;
-            const totalBets = winner.gamerBet;
-            //console.log(typeOf(name));
-            response.render("winner", {_id, name, totalBets})
+            const gamerBet = winner.gamerBet;
+            console.log(winner.totalBets);
+            response.render("winner", {_id, name, gamerBet, gameId})
             /* response.json({
                 message: 'The winner is:',
                 winner
             }); */
         }
-        console.log(data.inProgress);
         
     } catch (error) {
         response.status(500).json({

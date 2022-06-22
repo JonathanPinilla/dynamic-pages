@@ -13,6 +13,7 @@ const playerModel = require("../models/playersModel");
 
 router.post('/createGame', async (request, response, next) => {
     try {
+        await gameModel.deleteMany();
         await playerModel.deleteMany();
         const { _id, gamers } = request.body;
         console.log(_id);

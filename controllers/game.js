@@ -5,10 +5,7 @@ async function game(_id) {
     const gameModel = require("../models/gameModel.js");
     const playerModel = require("../models/playersModel");
 
-    const gameData = await gameModel.find();
     const playersData = await playerModel.find();
-
-    const amountOfPlayers = playersData.length;
 
     let dice = [];
 
@@ -21,11 +18,12 @@ async function game(_id) {
     const index = dice.indexOf(max);
 
     const winnerName = playersData[index].name;
+    const winId = playersData[index]._id;
 
     const winnerIs = await gameModel.findByIdAndUpdate(_id, {
-        winner: winnerName
+        winner: winnerName,
+        winnerId: winId
     });
-
     winnerIs.save();
 }
 
