@@ -5,14 +5,16 @@ var gameSchema = new Schema({
     _id: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        required: true
     },
     type: {
         type: String,
         trim: true
     },
     gamers: [{
-        type: String
+        type: String,
+        required: true
     }],
     inProgress: {
         type: Boolean,

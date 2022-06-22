@@ -5,5 +5,49 @@ html
         style
             include ../css/style.css
     
-    body
-        
+    body(style="display: flex; flex-direction: column; justify-content: center;")
+        h3 You have a game created, the current data is the following
+        table 
+            tr
+                th Field
+                th Value
+                th Gamer _id
+            
+            tr
+                td _id
+                td= _id
+            
+            tr
+                td Frist Gamer
+                td= gamers[0].name
+                td= gamers[0]._id
+            
+            tr 
+                td Second Gamer 
+                td= gamers[1].name
+                td= gamers[1]._id
+            
+            tr 
+                td Third Gamer 
+                td= gamers[2].name
+                td= gamers[2]._id
+            
+            tr 
+                td In progress?
+                td= inProgress 
+            
+            tr 
+                td Winner 
+                td= winner
+        if(winner == "No winner yet!")
+            h3 To start a new game fill the bet fields and then press start
+            form(action="/startGame", method="post") 
+                label(for='_id', class="gameLabel") Game _id
+                input(type="text", name="_id", required)
+                label(for='gamerBet', class="gameLabel") First Gamer: #{gamers[0].name} bet
+                input(type="number" min="1", name="gamerBet", required)
+                label(for='gamerBet', class="gameLabel") Second Gamer: #{gamers[1].name} bet
+                input(type="number" min="1", name="gamerBet", required)
+                label(for='gamerBet', class="gameLabel") Third Gamer: #{gamers[2].name} bet
+                input(type="number" min="1", name="gamerBet", required)
+                button(type="submit", class="button2")= startGame

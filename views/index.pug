@@ -8,8 +8,8 @@ html
     body 
         h3 This is the game main page, you must include 3 gamers in order to create a game
         form(action="/createGame", method="post") 
-            input(type="text", name="_id", placeholder="_id")
-            input(type="text", name="gamers", value="", placeholder="first gamer")
-            input(type="text", name="gamers", value="", placeholder="second gamer")
-            input(type="text", name="gamers", value="", placeholder="third gamer")
+            input(type="text", name="_id", placeholder="_id", required)
+            input(type="text", name="gamers", value="", placeholder="first gamer", required)
+            input(type="text", name="gamers", value="", placeholder="second gamer", required)
+            input(type="text", name="gamers", value="", placeholder="third gamer", required)
             button(type="submit") submit

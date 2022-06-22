@@ -1,0 +1,13 @@
+html 
+    
+    head
+        title= "Winner"
+        style
+            include ../css/style.css
+    
+    body(style="display: flex; flex-direction: column; justify-content: center;")
+        div
+            h2 The winner is: #{name} and win a total of #{totalBets}
+            h2 if you want to create a new game you press the button "New Game"
+            a(type="button" href="http://localhost:8080") New Game
+        

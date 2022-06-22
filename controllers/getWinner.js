@@ -13,10 +13,15 @@ router.get('/game/:_id/winner', async(request, response, next) => {
         if(data.inProgress == true){
             console.log('The game is not started')
         }else{
-            response.json({
+            const _id = winner._id;
+            const name = winner.name;
+            const totalBets = winner.gamerBet;
+            //console.log(typeOf(name));
+            response.render("winner", {_id, name, totalBets})
+            /* response.json({
                 message: 'The winner is:',
                 winner
-            });
+            }); */
         }
         console.log(data.inProgress);
         

@@ -30,7 +30,7 @@ router.post('/createGame', async (request, response, next) => {
         });
 
         await data.save();
-        response.redirect(`/getGame/${data._id}`);
+        response.redirect(`/game/${data._id}`);
     } catch (error) {
         response.status(500).json({
             message: error.message,

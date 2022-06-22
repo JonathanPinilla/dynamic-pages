@@ -16,25 +16,27 @@ router.get('/game/:_id', async (request, response, next) => {
         const inProgress = data.inProgress;
         const gamers = await playerModel.find();
         
-        const winner = await playerModel.findOne({'name': data.winner});
-
+        let winner = await playerModel.findOne({'name': data.winner});
+        let startGame = "Start Game";
         if(data.inProgress == true){
-            console.log("The game hasn't started yet, so there is no winner yet");
-            response.json({
+            winner = "No winner yet!"
+            response.render('getGame', {_id, gamers, inProgress, winner, startGame});
+            /*response.json({
                 message: 'The game has not started yet, so there is no winner yet',
                 _id,
                 gamers,
                 inProgress,
-                winner
-            });
+            });*/
         }else {
             console.log("The game has finished, winner is: " + data.winner);
-            response.json({
+            startGame = ""
+            response.render('getGame', {_id, gamers, inProgress, winner, startGame});
+            /*response.json({
                 _id,
                 gamers,
                 inProgress,
                 winner
-            });
+            });*/
         }
         
     } catch (error) {

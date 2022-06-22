@@ -4,7 +4,8 @@ Schema = mongoose.Schema;
 var playerSchema = new Schema({
     name: {
         type: String,
-        trim: true
+        trim: true,
+        required: true
     },
     gamerBet: {
         type: Number

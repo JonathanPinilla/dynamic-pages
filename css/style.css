@@ -11,12 +11,19 @@ h3 {
     color: darkslategray;
 }
 
-form {
+h2 {
+    font-weight: 700;
+    text-align: center;
+    color: whitesmoke;
+}
+
+form , div{
     display: flex;
     background-color: darkslategray;
     width: fit-content;
     border-radius: 10px;
     margin: auto;
+    margin-top: 20px;
     padding: 20px;
     flex-direction: column;
 }
@@ -41,7 +48,48 @@ button {
     margin: auto;
 }
 
+.button2, a{
+    border-radius: 10px;
+    padding: 10px;
+    background-color: rgb(223, 59, 59);
+    color: white;
+    width: fit-content;
+    border: none;
+    box-shadow: 1px 1px 5px black;
+    margin: auto;
+    font-weight: bold;
+    margin-top: 20px;
+    text-decoration: none;
+}
+
 button:hover {
     cursor: pointer;
     box-shadow: 1px 1px 10px black;
+}
+
+table {
+    background-color: darkslategray;
+    box-shadow: 1px 1px 10px black;
+}
+
+th {
+    background-color: lightslategray;
+}
+
+td {
+    background-color: darkblue;
+    color: whitesmoke
+}
+
+table, th, td {
+    text-align: center;
+    border:1px solid black;
+    padding: 5px;
+    border-radius: 5px;
+    margin: auto;
+}
+
+.gameLabel{
+    color: white;
+    font-weight: bold;
 }
