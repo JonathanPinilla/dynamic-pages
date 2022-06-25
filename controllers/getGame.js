@@ -1,3 +1,13 @@
+/**
+ * getGame is the controller that will get the game information stored in the database
+ * @param express import the express library
+ * @param router imports the Router() function from express
+ * @param gameModel imports the model of the game
+ * @param playerModel imports the model of the player
+ * @param game imports the class game
+ * @author Jonathan Daniel Pinilla Forero
+ */
+
 const express = require("express")
 const router = express.Router();
 
@@ -7,6 +17,12 @@ const game = require("./game.js");
 
 
 //GET - Return all games in the DB
+
+/**
+ * This class will find the game using the id recived by url
+ * @params _id is the id to find the game, is obtined by url
+ * @return a response to render a PUG template if there is a correct search, otherwise will return error
+ */
 
 router.get('/game/:_id', async (request, response, next) => {
     try {

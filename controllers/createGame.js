@@ -1,3 +1,15 @@
+/**
+ * Creates a new game 
+ * @param express import express library
+ * @param router imports the Router() function from express
+ * @param gameModel imports the model of the game
+ * @param playerModel imports the model of the player
+ * @param mongoose imports the mongoose library
+ * @param Shcema imports the class Schema from Mongoose library
+ * @param app imports the app from app.js
+ * @author Jonathan Daniel Pinilla Forero
+ */
+
 const express = require("express")
 const router = express.Router();
 var mongoose = require("mongoose");
@@ -10,6 +22,11 @@ const playerModel = require("../models/playersModel");
 
 
 //POST - Create a new Game
+
+/**
+ * This class creates a new game from the parameters given by a form
+ * @return redirect to getGame.js if everything is correct, otherwise returns the error
+ */
 
 router.post('/createGame', async (request, response, next) => {
     try {

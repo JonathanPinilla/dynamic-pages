@@ -1,3 +1,17 @@
+/**
+ * Main Class that will execute the whole application and will communicate with the controllers.
+ * In this file we declarate the behavior of the application, for example the express librari to manage all the content.
+ * @author Jonathan Daniel Pinilla Forero
+ * 
+ * @param express imports the express library
+ * @param logger imports the morgan library
+ * @param app is an express constant that will use that library
+ * @param http defines the protocol
+ * @param server creates a server using the protocol and the app
+ * @param mongoose imports the libary of mongoose
+ * 
+ */
+
 const express = require("express"),
     logger = require('morgan'),
     app = express(),
@@ -14,6 +28,11 @@ app.set('view engine', 'pug');
 require('dotenv').config({
     path: `./environments/${process.env.SCOPE === 'development' ? process.env.SCOPE : 'production'}.env`
 });
+
+/**
+ * Connects to the database 
+ * @param procces.env.MONGODB_URI is the variable that will communicate with the environments, production or development
+ */
 
 mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log('Connected to MongoDB');
@@ -39,4 +58,7 @@ router.get("/", (req, res) => {
 
 app.use(router);
 
+/**
+ * Exports the app so it can be usable in all the project
+ */
 module.exports = app;

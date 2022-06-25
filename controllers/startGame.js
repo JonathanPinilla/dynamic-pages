@@ -1,3 +1,14 @@
+/**
+ * Starts the game adding the bets for every player, playing the game and returning the winner
+ * @param express import express library
+ * @param findOneAndUpdate imports the class to find and update one gameModel
+ * @param router imports the Router() function from express
+ * @param gameModel imports the model of the game
+ * @param playerModel imports the model of the player
+ * @param game imports the class game
+ * @author Jonathan Daniel Pinilla Forero
+ */
+
 const express = require("express");
 const { findOneAndUpdate } = require("../models/gameModel.js");
 const router = express.Router();
@@ -7,6 +18,11 @@ const playerModel = require("../models/playersModel");
 const game = require("./game");//imports the class that runs the game and determinates which player is the winner
 
 //POST - Start a Game
+
+/**
+ * This is the class that send the bets of every player and updates the every playerModel
+ * @return redirect to getWinner if everything goes well, otherwise returns error
+ */
 
 router.post('/startGame', async (request, response, next) => {
     try {
